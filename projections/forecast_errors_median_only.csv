@@ -1,0 +1,5 @@
+date,main_model_forecast_err,full_model_forecast_err,no_behaviour_change_forecast_err,one_metapopulation_forecast_err
+23/05/2022,0.694,0.426,2.590,3.394
+20/06/2022,0.557,0.517,2.090,0.686
+18/07/2022,0.428,0.452,1.253,0.711
+15/08/2022,0.655,0.709,0.371,0.747
