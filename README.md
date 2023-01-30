@@ -1,6 +1,8 @@
 # MpoxUK
 
-The `MpoxUK` module provides methods for simulating MPX spread among men-who-have-sex-with-men (MSM) in the United Kingdom as well as the wider community. Weekly case data is from a combination of [Global.Health/ourworldindata](https://ourworldindata.org/monkeypox) and [UKHSA technical briefings](https://www.gov.uk/government/publications/monkeypox-outbreak-technical-briefings).
+The `MpoxUK` module provides a simulation and inference framework for Mpox transmission in the United Kingdom among gay and bisexual men who have sex with men (GBMSM) and the wider community.  
+
+Weekly Mpox case data is derived from
 
 A first preprint describing the underlying reasoning and methodology is now available [_The role of vaccination and public awareness in medium-term forecasts of monkeypox incidence in the United Kingdom_](https://www.medrxiv.org/content/10.1101/2022.08.15.22278788v1).
 
