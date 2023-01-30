@@ -1,4 +1,4 @@
-module MonkeypoxUK
+module MpoxUK
 
 using Distributions, StatsBase
 using LinearAlgebra, RecursiveArrayTools
@@ -22,4 +22,4 @@ include("dynamics.jl")
 include("inference.jl")
 # include("analysis.jl")
 
-end # module MonkeypoxUK
+end # module MpoxUK

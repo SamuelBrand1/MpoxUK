@@ -18,7 +18,7 @@ function simulation_based_calibration(
     end
     ## Prior predictive checking - simulation
     draws = [rand.(prior_vect) for i = 1:1000]
-    prior_sims = map(θ -> MonkeypoxUK.mpx_sim_function_chp(θ, constants, mpxv_wkly), draws)
+    prior_sims = map(θ -> MpoxUK.mpx_sim_function_chp(θ, constants, mpxv_wkly), draws)
 
     ##Prior predictive checking - simulation
     prior_preds = [sim[2].detected_cases for sim in prior_sims]
@@ -38,7 +38,7 @@ function simulation_based_calibration(
         println("Starting model-based calibration")
     end
     mbc_errs = map(
-        n -> MonkeypoxUK.mpx_sim_function_chp(
+        n -> MpoxUK.mpx_sim_function_chp(
             draws[n],
             constants,
             prior_sims[n][2].detected_cases,

@@ -5,7 +5,7 @@ using Distributions, StatsBase, StatsPlots, Plots.PlotMeasures
 using LinearAlgebra, RecursiveArrayTools
 using OrdinaryDiffEq, ApproxBayes, CSV, DataFrames, Dates
 using JLD2, MCMCChains
-using MonkeypoxUK
+using MpoxUK
 using LaTeXStrings, Latexify
 
 ## MSM data with data inference

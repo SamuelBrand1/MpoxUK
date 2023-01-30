@@ -1,5 +1,5 @@
 #set wd in windows:
-#cd(raw"C:\Users\massimo.cavallaro\Documents\MPX\MonkeypoxUK\\")
+#cd(raw"C:\Users\massimo.cavallaro\Documents\MPX\MpoxUK\\")
 
 using CSV, DataFrames, Plots, Dates, Plots.PlotMeasures, ColorSchemes
 

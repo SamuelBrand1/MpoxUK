@@ -44,12 +44,12 @@ function add_proj_plot(plt_gbmsm, plt_nongbmsm, post_draws, start_wk, clr, lab_s
         post_draws.end_states,
     )
 
-    cred_proj = MonkeypoxUK.cred_intervals(
+    cred_proj = MpoxUK.cred_intervals(
         [proj.detected_cases for proj in projections_from_end],
         central_est = :median,
     )
 
-    cred_prev_cases = MonkeypoxUK.cred_intervals(
+    cred_prev_cases = MpoxUK.cred_intervals(
         [proj for proj in post_draws.detected_cases],
         central_est = :median,
     )

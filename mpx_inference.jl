@@ -5,14 +5,14 @@ using LinearAlgebra, RecursiveArrayTools
 using OrdinaryDiffEq, ApproxBayes
 using JLD2, MCMCChains, Roots, Dates
 using CSV, DataFrames, StatsPlots, Plots.PlotMeasures
-import MonkeypoxUK
+import MpoxUK
 
 ## MSM data with data inference
 
 past_mpxv_data_inferred = CSV.File("data/weekly_data_imputation_2022-09-30.csv",
                                 missingstring = "NA") |> DataFrame
 
-colname = "seqn_fit3"
+colname = "seqn_fit5"
 inferred_prop_na_msm = past_mpxv_data_inferred[:, colname] |> x -> x[.~ismissing.(x)]
 mpxv_wkly =
     past_mpxv_data_inferred[1:size(inferred_prop_na_msm, 1), ["gbmsm", "nongbmsm"]] .+
@@ -22,8 +22,6 @@ mpxv_wkly =
 wks = Date.(past_mpxv_data_inferred.week[1:size(mpxv_wkly, 1)], DateFormat("dd/mm/yyyy"))
                                 
 # Leave out first two weeks because reporting changed in early May
-# mpxv_wkly = mpxv_wkly[3:(end-4), :]
-# wks = wks[3:(end-4)]
 
 mpxv_wkly = mpxv_wkly[3:end, :]
 wks = wks[3:end]
@@ -102,17 +100,17 @@ model_str_to_prior = Dict("no_ngbmsm_chg" => prior_vect_no_ngbmsm_chg,
 
 ## Choose model
 
-# description_str = "no_ngbmsm_chg" #<---- This is the main model
+description_str = "no_ngbmsm_chg" #<---- This is the main model
 # description_str = "no_bv_cng" #<---- This is the version of the model with no behavioural change
 # description_str = "one_metapop" #<--- This is the version of the model with no metapopulation structure
-description_str = "" #<--- this is the older version main model
+# description_str = "" #<--- this is the older version main model
 
-prior_vect_cng_pnt = model_str_to_prior[description_str]
+prior_vect_cng_pnt = model_str_to_prior[description_str] # Chooses the appropriate priors for the model choice
 
 
-#Use SBC for defining the ABC error target and generate prior predictive plots
+#Use simulation-based calibration for defining the ABC error target and generate prior predictive plots
 
-ϵ_target, plt_prc, hist_err = MonkeypoxUK.simulation_based_calibration(
+ϵ_target, plt_prc, hist_err = MpoxUK.simulation_based_calibration(
     prior_vect_cng_pnt,
     wks,
     mpxv_wkly,
@@ -121,7 +119,7 @@ prior_vect_cng_pnt = model_str_to_prior[description_str]
 )
 
 setup_cng_pnt = ABCSMC(
-    MonkeypoxUK.mpx_sim_function_chp, #simulation function
+    MpoxUK.mpx_sim_function_chp, #simulation function
     length(prior_vect_cng_pnt), # number of parameters
     ϵ_target, #target ϵ derived from simulation based calibration
     Prior(prior_vect_cng_pnt); #Prior for each of the parameters

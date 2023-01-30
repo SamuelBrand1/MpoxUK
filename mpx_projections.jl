@@ -4,7 +4,7 @@ using LinearAlgebra, RecursiveArrayTools, Dates
 using ProgressMeter
 using OrdinaryDiffEq, ApproxBayes, MCMCChains
 using JLD2
-using MonkeypoxUK
+using MpoxUK
 
 ## MSM data with data inference
 
@@ -263,87 +263,87 @@ projections_reversions_12wk_rev_no_vac =
 
 ## Quantiles of projections
 
-cred_int = MonkeypoxUK.cred_intervals(detected_cases, central_est = :median)
+cred_int = MpoxUK.cred_intervals(detected_cases, central_est = :median)
 
-cred_unmitigated = MonkeypoxUK.cred_intervals(
+cred_unmitigated = MpoxUK.cred_intervals(
     [proj.detected_cases for proj in projections_no_mitigation],
     central_est = :median,
 )
 
-cred_proj = MonkeypoxUK.cred_intervals(
+cred_proj = MpoxUK.cred_intervals(
     [proj.detected_cases for proj in projections_from_end],
     central_est = :median,
 )
 
 
-cred_int_12wk = MonkeypoxUK.cred_intervals(
+cred_int_12wk = MpoxUK.cred_intervals(
     [proj.detected_cases for proj in projections_reversions_12wk_rev],
     central_est = :median,
 )
-cred_int_12wk_no_vacs = MonkeypoxUK.cred_intervals(
+cred_int_12wk_no_vacs = MpoxUK.cred_intervals(
     [proj.detected_cases for proj in projections_reversions_12wk_rev_no_vac],
     central_est = :median,
 )
 
-cred_int_4wk_uniform_vacs = MonkeypoxUK.cred_intervals(
+cred_int_4wk_uniform_vacs = MpoxUK.cred_intervals(
     [proj.detected_cases for proj in projections_reversions_4wk_rev_uniform_vac],
     central_est = :median,
 )
 
-cred_int_12wk_uniform_vacs = MonkeypoxUK.cred_intervals(
+cred_int_12wk_uniform_vacs = MpoxUK.cred_intervals(
     [proj.detected_cases for proj in projections_reversions_12wk_rev_uniform_vac],
     central_est = :median,
 )
 
-cred_int_4wk = MonkeypoxUK.cred_intervals(
+cred_int_4wk = MpoxUK.cred_intervals(
     [proj.detected_cases for proj in projections_reversions_4wk_rev],
     central_est = :median,
 )
-cred_int_4wk_no_vacs = MonkeypoxUK.cred_intervals(
+cred_int_4wk_no_vacs = MpoxUK.cred_intervals(
     [proj.detected_cases for proj in projections_reversions_4wk_rev_no_vac],
     central_est = :median,
 )
 
 cum_cred_int =
-    MonkeypoxUK.cred_intervals(cumsum(detected_cases, dims = 1), central_est = :median)
-cum_cred_int_12wk = MonkeypoxUK.cred_intervals(
+    MpoxUK.cred_intervals(cumsum(detected_cases, dims = 1), central_est = :median)
+cum_cred_int_12wk = MpoxUK.cred_intervals(
     [proj.detected_cases for proj in projections_reversions_12wk_rev] .|> x -> cumsum(x, dims = 1),
     central_est = :median,
 )
 
-cum_cred_unmitigated = MonkeypoxUK.cred_intervals(
+cum_cred_unmitigated = MpoxUK.cred_intervals(
     [proj.detected_cases for proj in projections_no_mitigation] .|> x -> cumsum(x, dims = 1),
     central_est = :median,
 )
 
-cum_cred_unmitigated_all_infections = MonkeypoxUK.matrix_cred_intervals(
+cum_cred_unmitigated_all_infections = MpoxUK.matrix_cred_intervals(
     [sum(proj.detected_cases,dims = 2) for proj in projections_no_mitigation] .|> x -> cumsum(x, dims = 1),
     central_est = :median,
 )
 
-cum_cred_int_12wk_no_vacs = MonkeypoxUK.cred_intervals(
+cum_cred_int_12wk_no_vacs = MpoxUK.cred_intervals(
     [proj.detected_cases for proj in projections_reversions_12wk_rev_no_vac] .|> x -> cumsum(x, dims = 1),
     central_est = :median,
 )
-cum_cred_int_4wk = MonkeypoxUK.cred_intervals(
+cum_cred_int_4wk = MpoxUK.cred_intervals(
     [proj.detected_cases for proj in projections_reversions_4wk_rev] .|> x -> cumsum(x, dims = 1),
     central_est = :median,
 )
-cum_cred_int_4wk_no_vacs = MonkeypoxUK.cred_intervals(
+cum_cred_int_4wk_no_vacs = MpoxUK.cred_intervals(
     [proj.detected_cases for proj in projections_reversions_4wk_rev_no_vac] .|> x -> cumsum(x, dims = 1),
     central_est = :median,
 )
 
 cum_cred_infs =
-    MonkeypoxUK.matrix_cred_intervals(cumsum.(incidences, dims = 1), central_est = :median)
+    MpoxUK.matrix_cred_intervals(cumsum.(incidences, dims = 1), central_est = :median)
 
 gbmsm_total_infs = [sum(inc[:,1:10], dims = 2) for inc in incidences]
 nongbmsm_total_infs = [inc[:,[11]] for inc in incidences]
 cum_cred_total_gbmsm_infs =
-    MonkeypoxUK.matrix_cred_intervals(cumsum.(gbmsm_total_infs, dims = 1)./N_msm, central_est = :median)
+    MpoxUK.matrix_cred_intervals(cumsum.(gbmsm_total_infs, dims = 1)./N_msm, central_est = :median)
 
 cum_cred_total_nongbmsm_infs =
-    MonkeypoxUK.matrix_cred_intervals(cumsum.(nongbmsm_total_infs, dims = 1)./(N_uk-N_msm), central_est = :median)
+    MpoxUK.matrix_cred_intervals(cumsum.(nongbmsm_total_infs, dims = 1)./(N_uk-N_msm), central_est = :median)
         
 
 ## Output quantities reported in paper to LaTeX

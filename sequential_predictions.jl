@@ -2,7 +2,7 @@ using Distributions, StatsBase, StatsPlots, Plots.PlotMeasures
 using LinearAlgebra, RecursiveArrayTools, CSV
 using OrdinaryDiffEq, ApproxBayes, DataFrames
 using JLD2, MCMCChains, ProgressMeter
-using MonkeypoxUK
+using MpoxUK
 using ColorSchemes, Dates
 using Latexify
 

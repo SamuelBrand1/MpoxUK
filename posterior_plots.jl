@@ -2,7 +2,7 @@ using Distributions, StatsBase, StatsPlots, Plots.PlotMeasures
 using LinearAlgebra, RecursiveArrayTools
 using OrdinaryDiffEq, ApproxBayes, CSV, DataFrames, Dates
 using JLD2, MCMCChains
-using MonkeypoxUK
+using MpoxUK
 
 ## Grab UK data and setup model
 past_mpxv_data_inferred =

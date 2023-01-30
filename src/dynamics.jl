@@ -746,13 +746,13 @@ function mpx_sim_function_projections(params, constants, interventions, init_con
     # # Generate transmission matrices based on the inital state
     N_clique = sum(init_condition.x[1], dims = [1, 2])[:]
     N_grp_msm = sum(init_condition.x[1], dims = 1)[1, :, :]
-    Λ, B = MonkeypoxUK.setup_transmission_matrix(ms, ps, N_clique; ingroup = ingroup)
+    Λ, B = MpoxUK.setup_transmission_matrix(ms, ps, N_clique; ingroup = ingroup)
 
     #Project forwards
 
     _p = copy([p_trans, R0_other, γ_eff, α_incubation, vac_effectiveness])
     prob = DiscreteProblem(
-        (du, u, p, t) -> MonkeypoxUK.f_mpx_vac(
+        (du, u, p, t) -> MpoxUK.f_mpx_vac(
             du,
             u,
             p,
@@ -901,13 +901,13 @@ function mpx_sim_function_projections_uniform_vaccination(params, constants, int
     # # Generate transmission matrices based on the inital state
     N_clique = sum(init_condition.x[1], dims = [1, 2])[:]
     N_grp_msm = sum(init_condition.x[1], dims = 1)[1, :, :]
-    Λ, B = MonkeypoxUK.setup_transmission_matrix(ms, ps, N_clique; ingroup = ingroup)
+    Λ, B = MpoxUK.setup_transmission_matrix(ms, ps, N_clique; ingroup = ingroup)
 
     #Project forwards
 
     _p = copy([p_trans, R0_other, γ_eff, α_incubation, vac_effectiveness])
     prob = DiscreteProblem(
-        (du, u, p, t) -> MonkeypoxUK.f_mpx_vac(
+        (du, u, p, t) -> MpoxUK.f_mpx_vac(
             du,
             u,
             p,
@@ -1062,13 +1062,13 @@ function mpx_sim_function_projections(
     # # Generate transmission matrices based on the inital state
     N_clique = sum(init_condition.x[1], dims = [1, 2])[:]
     N_grp_msm = sum(init_condition.x[1], dims = 1)[1, :, :]
-    Λ, B = MonkeypoxUK.setup_transmission_matrix(ms, ps, N_clique; ingroup = ingroup)
+    Λ, B = MpoxUK.setup_transmission_matrix(ms, ps, N_clique; ingroup = ingroup)
 
     #Project forwards
 
     _p = copy([p_trans, R0_other, γ_eff, α_incubation, vac_effectiveness])
     prob = DiscreteProblem(
-        (du, u, p, t) -> MonkeypoxUK.f_mpx_vac(
+        (du, u, p, t) -> MpoxUK.f_mpx_vac(
             du,
             u,
             p,
@@ -1236,13 +1236,13 @@ function mpx_sim_function_projections_uniform_vaccination(
     # # Generate transmission matrices based on the inital state
     N_clique = sum(init_condition.x[1], dims = [1, 2])[:]
     N_grp_msm = sum(init_condition.x[1], dims = 1)[1, :, :]
-    Λ, B = MonkeypoxUK.setup_transmission_matrix(ms, ps, N_clique; ingroup = ingroup)
+    Λ, B = MpoxUK.setup_transmission_matrix(ms, ps, N_clique; ingroup = ingroup)
 
     #Project forwards
 
     _p = copy([p_trans, R0_other, γ_eff, α_incubation, vac_effectiveness])
     prob = DiscreteProblem(
-        (du, u, p, t) -> MonkeypoxUK.f_mpx_vac(
+        (du, u, p, t) -> MpoxUK.f_mpx_vac(
             du,
             u,
             p,

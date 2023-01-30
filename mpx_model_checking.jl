@@ -2,7 +2,7 @@ using Distributions, StatsBase, StatsPlots, Plots.PlotMeasures
 using LinearAlgebra, RecursiveArrayTools, CSV
 using OrdinaryDiffEq, ApproxBayes, DataFrames
 using JLD2, MCMCChains, ProgressMeter
-using MonkeypoxUK
+using MpoxUK
 using ColorSchemes, Dates
 
 ## MSM data with data inference
@@ -143,7 +143,7 @@ no_vac_and_no_red_ensemble = [
     ) for θ in param_draws_no_behav
 ]
 
-mpx_sim_function_interventions = MonkeypoxUK.mpx_sim_function_interventions
+mpx_sim_function_interventions = MpoxUK.mpx_sim_function_interventions
 
 preds_and_incidence_interventions = map(
     (θ, intervention) ->
@@ -227,16 +227,16 @@ cum_cases_forwards_cvac12wk = [
 
 ##Simulation projections
 
-cred_int = MonkeypoxUK.cred_intervals(preds)
-cred_int_4wk = MonkeypoxUK.cred_intervals(preds_4wk)
-cred_int_12wk = MonkeypoxUK.cred_intervals(preds_12wk)
+cred_int = MpoxUK.cred_intervals(preds)
+cred_int_4wk = MpoxUK.cred_intervals(preds_4wk)
+cred_int_12wk = MpoxUK.cred_intervals(preds_12wk)
 
-cred_int_cvac = MonkeypoxUK.cred_intervals(preds_cvac)
-cred_int_cvac4wk = MonkeypoxUK.cred_intervals(preds_cvac4wk)
-cred_int_cvac12wk = MonkeypoxUK.cred_intervals(preds_cvac12wk)
+cred_int_cvac = MpoxUK.cred_intervals(preds_cvac)
+cred_int_cvac4wk = MpoxUK.cred_intervals(preds_cvac4wk)
+cred_int_cvac12wk = MpoxUK.cred_intervals(preds_cvac12wk)
 
-cred_int_unmitigated = MonkeypoxUK.cred_intervals(pred_unmitigated)
-cred_int_cum_cases_unmitigated = MonkeypoxUK.cred_intervals(cum_cases_unmitigated)
+cred_int_unmitigated = MpoxUK.cred_intervals(pred_unmitigated)
+cred_int_cum_cases_unmitigated = MpoxUK.cred_intervals(cum_cases_unmitigated)
 
 ## MSM projections
 d_proj = 19
@@ -550,13 +550,13 @@ display(plt_nmsm)
 
 ##cumulative Incidence plots
 
-cred_int_cum_incidence = MonkeypoxUK.cred_intervals(cum_cases_forwards)
-cred_int_cum_incidence4wks = MonkeypoxUK.cred_intervals(cum_cases_forwards_4wk)
-cred_int_cum_incidence12wks = MonkeypoxUK.cred_intervals(cum_cases_forwards_12wk)
+cred_int_cum_incidence = MpoxUK.cred_intervals(cum_cases_forwards)
+cred_int_cum_incidence4wks = MpoxUK.cred_intervals(cum_cases_forwards_4wk)
+cred_int_cum_incidence12wks = MpoxUK.cred_intervals(cum_cases_forwards_12wk)
 
-cred_int_cum_incidence_cvac = MonkeypoxUK.cred_intervals(cum_cases_forwards_cvac)
-cred_int_cum_incidence_cvac4wks = MonkeypoxUK.cred_intervals(cum_cases_forwards_cvac4wk)
-cred_int_cum_incidence_cvac12wks = MonkeypoxUK.cred_intervals(cum_cases_forwards_cvac12wk)
+cred_int_cum_incidence_cvac = MpoxUK.cred_intervals(cum_cases_forwards_cvac)
+cred_int_cum_incidence_cvac4wks = MpoxUK.cred_intervals(cum_cases_forwards_cvac4wk)
+cred_int_cum_incidence_cvac12wks = MpoxUK.cred_intervals(cum_cases_forwards_cvac12wk)
 
 
 
