@@ -118,6 +118,7 @@ scatter!(
 )
 display(plt_vacs)
 savefig(plt_vacs, "plots/vaccine_rollout.png")
+savefig(plt_vacs, "plots/vaccine_rollout.pdf")
 
 vaccine_projections = DataFrame(
     "Date" => [wks[1] + Day(7 * (k - 1)) for k = 1:size(long_wks, 1)],
@@ -371,7 +372,8 @@ plt_msm = plot(;
         [Date(2022, 5, 1) + Month(k) for k = 0:11],
         [monthname(Date(2022, 5, 1) + Month(k))[1:3] for k = 0:11],
     ),
-    left_margin = 5mm,
+    left_margin = 10mm,
+    top_margin = 5mm,
     size = (800, 600),
     dpi = 250,
     tickfont = 13,
@@ -537,6 +539,7 @@ scatter!(
 
 
 display(plt_msm)
+
 
 ##
 
@@ -836,7 +839,7 @@ plt_R_gbmsm = plot(
     ),
     yticks = 0:10,
     color = :black,
-    left_margin = 5mm,
+    left_margin = 8mm,
     size = (800, 600),
     dpi = 250,
     tickfont = 13,
@@ -985,6 +988,7 @@ vline!(
     annotation = (Date(2022, 7, 23) + Day(7), 7.5, "WHO declaration"),
     annotationrotation = 270,
 )
+
 
 ##
 dates = [Date(2021, 12, 31) + Day(t) for t in ts_reversion]
@@ -1172,7 +1176,8 @@ plt = plot(
     layout = (1, 2),
 )
 display(plt)
-savefig(plt, "plots/risk_over_time" * string(wks[end]) * description_str * ".png")
+# savefig(plt, "plots/risk_over_time" * string(wks[end]) * description_str * ".png")
+savefig(plt, "plots/risk_over_time" * string(wks[end]) * description_str * ".pdf")
 
 
 ##Cumulative infections
@@ -1209,6 +1214,7 @@ case_output = case_output * raw"\newcommand{\unmitigated}{" * "$(m) ($(qs[1]) --
 
 
 ##
+
 plt_cm_msm = plot(;
     ylabel = "Cumulative cases (thousands)",
     title = "UK Monkeypox cumulative case projections (GBMSM)",
@@ -1584,12 +1590,32 @@ fig1 = plot(
     # plt_prop,
     size = (1750, 1600),
     dpi = 250,
-    left_margin = 10mm,
+    left_margin = 20mm,
     bottom_margin = 10mm,
     right_margin = 10mm,
     top_margin = 5mm,
     layout = layout,
+    # annotation = (Date(2022, 7, 23) + Day(7), 7.5, "WHO declaration"),
 )
+
+plot!(fig1,
+        subplot = 1,
+        annotation = (Date(2022, 3, 28), 11, text("a)", 32)),
+        annotationrotation = 0,
+        )
+
+plot!(fig1,
+        subplot = 2,
+        annotation = (Date(2022, 2, 15), 548, text("b)", 32)),
+        annotationrotation = 0,
+        )
+
+plot!(fig1,
+        subplot = 3,
+        annotation = (Date(2022, 2, 15), 110, text("c)", 32)),
+        annotationrotation = 0,
+        )
+
 
 display(fig1)
 savefig(fig1, "plots/main_figure1_" * string(wks[end]) * description_str * ".png")
@@ -1612,7 +1638,25 @@ fig2 = plot(
     layout = layout,
 )
 
+plot!(fig2;
+        subplot = 1,
+        annotation = (-1,5,text("a)", 32)),
+        )
+
+plot!(fig2,
+        subplot = 2,
+        annotation = (Date(2022, 2, 20), 15.75e3, text("b)", 32)),
+        annotationrotation = 0,
+        )  
+
+plot!(fig2,
+        subplot = 3,
+        annotation = (Date(2022, 2, 20), 1450, text("c)", 32)),
+        annotationrotation = 0,
+        )              
+
 display(fig2)
+
 savefig(fig2, "plots/main_figure2_" * string(wks[end]) * description_str * ".png")
 savefig(fig2, "plots/main_figure2_" * string(wks[end]) * description_str * ".pdf")
 savefig(fig2, "plots/main_figure2_" * string(wks[end]) * description_str * ".svg")
