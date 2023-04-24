@@ -134,8 +134,8 @@ model_str_to_prior = Dict("no_ngbmsm_chg" => (prior_vect_no_ngbmsm_chg, param_id
 
 date_str = "2022-09-26"
 
-description_str = "no_ngbmsm_chg" #<---- This is the main model
-# description_str = "no_bv_cng" #<---- This is the version of the model with no behavioural change
+# description_str = "no_ngbmsm_chg" #<---- This is the main model
+description_str = "no_bv_cng" #<---- This is the version of the model with no behavioural change
 # description_str = "one_metapop" #<--- This is the version of the model with no metapopulation structure
 # description_str = "" #<--- this is the older version main model
 
@@ -181,7 +181,8 @@ plt_grp_size = bar(
     right_margin = 5mm,
 )
 display(plt_grp_size)
-savefig(plt_grp_size, "plots/metapopulation_sizes.png")
+savefig(plt_grp_size, "plots/metapopulation_sizes" * date_str * description_str * ".png")
+
 ##Create transformations to more interpetable parameters
 all_priors, idxs = model_str_to_prior[description_str]
 priors = all_priors[idxs]
