@@ -73,7 +73,7 @@ include("projection_functions.jl");
 ##
 
 description_strs = ["no_ngbmsm_chg", "", "no_bv_cng", "one_metapop"]
-description_labs = ["Main model", "Also non-GBMSM behaviour change", "No behaviour change", "Homo. pop."]
+description_labs = ["Main model", "Also non-GBMSM behaviour change", "No behaviour change", "One metapopulation"]
 clrs = 1:4
 
 errs_by_data = map(1:5) do n
