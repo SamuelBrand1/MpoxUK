@@ -80,6 +80,8 @@ daily_incubation_prob =
 
 display(plt_incfit)
 savefig(plt_incfit, "plots/incubation_fit_revised.png")
+savefig(plt_incfit, "plots/incubation_fit_revised.pdf")
+
 ## Next generation calculations
 
 function next_state_mat(p_inf)
@@ -171,6 +173,7 @@ scatter!(
 )
 display(plt_gen_distrib)
 savefig(plt_gen_distrib, "plots/generation_distribution.png")
+savefig(plt_gen_distrib, "plots/generation_distribution.pdf")
 
 ## Set up equipotential groups
 
@@ -232,10 +235,27 @@ plt_μs = bar(
     lab = "",
 )
 hline!(plt_μs, [1 / 31], lab = "Vac. threshold", lw = 3, legend = :topleft)
-plt = plot(plt_ps, plt_μs, size = (1000, 400), bottom_margin = 5mm, left_margin = 5mm)
-display(plt)
-# savefig(plt, "plots/sexual_activity_groups.png")
+plt = plot(plt_ps,
+            plt_μs, 
+            size = (1000, 400), 
+            bottom_margin = 5mm, 
+            top_margin = 5mm,
+            left_margin = 5mm)
 
+plot!(plt,
+        subplot = 1,
+        annotation = (-1, 2, text("a)", 18)),
+        annotationrotation = 0,
+        )        
+plot!(plt,
+        subplot = 2,
+        annotation = (-1, 23, text("b)", 18)),
+        annotationrotation = 0,
+        )   
+display(plt)
+
+savefig(plt, "plots/sexual_activity_groups.png")
+savefig(plt, "plots/sexual_activity_groups.pdf")
 
 ## Set up constant data for ABC
 
