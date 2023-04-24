@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/592849504.svg)](https://zenodo.org/badge/latestdoi/592849504)
+
 # MpoxUK
 
 The `MpoxUK` module provides a simulation and inference framework for Mpox transmission in the United Kingdom among gay and bisexual men who have sex with men (GBMSM) and the wider community. Full details are available in _The role of vaccination and public awareness in forecasts of Mpox incidence in the United Kingdom_ (under revision).
