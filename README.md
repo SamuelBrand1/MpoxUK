@@ -2,8 +2,7 @@
 
 # MpoxUK
 
-The `MpoxUK` module provides a simulation and inference framework for Mpox transmission in the United Kingdom among gay and bisexual men who have sex with men (GBMSM) and the wider community. Full details are available in _The role of vaccination and public awareness in forecasts of Mpox incidence in the United Kingdom_ (under revision).
-
+The `MpoxUK` module provides a simulation and inference framework for Mpox transmission in the United Kingdom among gay and bisexual men who have sex with men (GBMSM) and the wider community. Full details are available in [_The role of vaccination and public awareness in forecasts of Mpox incidence in the United Kingdom_](https://www.nature.com/articles/s41467-023-38816-8).
 ### Preprint versions
 
 This modelling framework has evolved during 2022 and early 2023. Earlier versions can be found [here](https://github.com/SamuelBrand1/MonkeypoxUK), and are described in two preprints:
