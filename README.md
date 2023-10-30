@@ -13,7 +13,7 @@ This modelling framework has evolved during 2022 and early 2023. Earlier version
 
 ### Quick start for inference
 
-1. Download [Julia](https://julialang.org/downloads/).
+1. Download [Julia version 1.8.3](https://julialang.org/downloads/oldreleases/). Other versions will require more recent versions of the dependencies than in the versions in `Project.toml` and `Manifest.toml` that were used to generate this modelling.
 2. Clone this repository.
 3. Start the Julia REPL.
 4. Change working directory to where this repo is cloned.
