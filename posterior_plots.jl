@@ -6,10 +6,10 @@ using MpoxUK
 
 ## Grab UK data and setup model
 past_mpxv_data_inferred =
-    CSV.File("data/weekly_data_imputation_2022-09-30.csv", missingstring = "NA") |>
+    CSV.File("data/weekly_data_imputation_2022-10-26.csv", missingstring = "NA") |>
     DataFrame
 
-colname = "seqn_fit5"
+colname = "seqn_fit7"
 inferred_prop_na_msm = past_mpxv_data_inferred[:, colname] |> x -> x[.~ismissing.(x)]
 mpxv_wkly =
     past_mpxv_data_inferred[1:size(inferred_prop_na_msm, 1), ["gbmsm", "nongbmsm"]] .+
@@ -134,8 +134,8 @@ model_str_to_prior = Dict("no_ngbmsm_chg" => (prior_vect_no_ngbmsm_chg, param_id
 
 date_str = "2022-09-26"
 
-# description_str = "no_ngbmsm_chg" #<---- This is the main model
-description_str = "no_bv_cng" #<---- This is the version of the model with no behavioural change
+description_str = "no_ngbmsm_chg" #<---- This is the main model
+# description_str = "no_bv_cng" #<---- This is the version of the model with no behavioural change
 # description_str = "one_metapop" #<--- This is the version of the model with no metapopulation structure
 # description_str = "" #<--- this is the older version main model
 
@@ -216,7 +216,7 @@ pretty_names = pretty_parameter_names[idxs]
 detection_dispersion_prior_draws = rand(priors[5], 10_000) .|> x -> 1 / (x + 1)
 
 post_plt = plot(;
-    layout = (3, 3),
+    layout = length(priors) > 9 ? (4, 3) : (3, 3),
     size = (1500, 1500),
     dpi = 250,
     left_margin = 10mm,
