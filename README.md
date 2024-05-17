@@ -13,15 +13,15 @@ This modelling framework has evolved during 2022 and early 2023. Earlier version
 
 ### Quick start for inference
 
-1. Download [Julia version 1.8.3](https://julialang.org/downloads/oldreleases/). Other versions will require more recent versions of the dependencies than in the versions in `Project.toml` and `Manifest.toml` that were used to generate this modelling.
-2. Clone this repository.
-3. Start the Julia REPL.
-4. Change working directory to where this repo is cloned.
-5. Enter `Pkg` mode by pressing `]`
-6. Activate the environment for `MpoxUK` and download the underlying dependencies.
+1. The code in this repository runs with Julia version 1.8. This can be added locally using `juliaup`, e.g. `juliaup add 1.8`, then write `julia +1.8 ...` for executing code. Other julia versions will require more recent versions of the dependencies than in the versions in `Project.toml` and `Manifest.toml` that were used to generate this modelling.
+3. Clone this repository.
+4. Start the Julia REPL.
+5. Change working directory to where this repo is cloned.
+6. Enter `Pkg` mode by pressing `]`
+7. Activate the environment for `MpoxUK` and download the underlying dependencies.
     > pkg> activate . \
     > pkg> instantiate
-7. The script `mpx_inference.jl` covers running the inference methodology. The script loads the underlying case data into a two column matrix `mpxv_wkly` where rows are weeks and first column is reported MSM cases and second column is reported non-MSM cases. The Monday date for each week is given as a `Vector{Date}` array `wks`.
+8. The script `mpx_inference.jl` covers running the inference methodology. The script loads the underlying case data into a two column matrix `mpxv_wkly` where rows are weeks and first column is reported MSM cases and second column is reported non-MSM cases. The Monday date for each week is given as a `Vector{Date}` array `wks`.
 
 ### Other scripts
 
